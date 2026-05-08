@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayratama Studio - Jasa Perhitungan Struktur</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    header {
+      background-color: #000;
+      color: #f1c40f;
+      text-align: center;
+      padding: 50px 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    header img {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #f1c40f;
+    }
+    header p {
+      margin: 5px 0;
+      font-size: 1.2em;
+      color: #fff;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #0a1f44;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 10px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    ul li::before {
+      content: "✅";
+      position: absolute;
+      left: 0;
+    }
+    .contact {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .contact a {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    form input:invalid {
+      border-color: red;
+    }
+    form input:valid {
+      border-color: green;
+    }
+    form button {
+      background-color: #0a1f44;
+      color: #f1c40f;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #f1c40f;
+      color: #0a1f44;
+    }
+    .success-message {
+      display: none;
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode header {
+      background-color: #1c1c1c;
+      color: #f1c40f;
+    }
+    body.dark-mode form {
+      background-color: #1c1c1c;
+      color: #e0e0e0;
+    }
+    body.dark-mode footer {
+      background-color: #1c1c1c;
+      color: #e0e0e0;
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #0a1f44;
+      color: #f1c40f;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+  <!-- reCAPTCHA script -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+  <header>
+    <img src="logo-ayratama.jpeg" alt="Logo Ayratama Studio">
+    <h1>Ayratama Studio</h1>
+    <p>🏗️ Spesialis Jasa Perhitungan Struktur</p>
+    <p>📜 Professional Structural Engineer</p>
+  </header>
+
+  <section>
+    <h2>Tentang Kami</h2>
+    <p>Ayratama Studio adalah layanan profesional yang berfokus pada perhitungan struktur bangunan dengan lisensi dan sertifikasi resmi. Kami memastikan setiap proyek memiliki dasar teknis yang kuat, aman, dan sesuai regulasi.</p>
+  </section>
+
+  <section>
+    <h2>Layanan Kami</h2>
+    <ul>
+      <li>Perhitungan Struktur Berlisensi & Bersertifikat</li>
+      <li>Laporan Teknis</li>
+      <li>Gambar Kerja</li>
+      <li>SIKK/IPTB</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Mengapa Memilih Kami?</h2>
+    <ul>
+      <li>Engineer berpengalaman & tersertifikasi</li>
+      <li>Dokumen resmi sesuai standar regulasi</li>
+      <li>Cocok untuk proyek rumah, gedung, maupun komersial</li>
+      <li>Kepatuhan penuh terhadap aturan konstruksi</li>
+    </ul>
+  </section>
+
+  <section class="contact">
+    <h2>Hubungi Kami</h2>
+    <a href="tel:085697666386">📱 WhatsApp: 085697666386</a>
+
+    <!-- Form kontak dengan Formspree + reCAPTCHA -->
+    <form id="contactForm" action="https://formspree.io/f/xqendged" method="POST">
+      <input type="text" name="nama" placeholder="Nama Anda" required>
+      <input type="email" name="email" placeholder="Email Anda" required>
+      <textarea name="pesan" rows="5" placeholder="Pesan Anda" required></textarea>
+      
+      <!-- reCAPTCHA dengan site key terbaru -->
+      <div class="g-recaptcha" data-sitekey="6LeNDN8sAAAAAAZPumq4V-hRjFLlbwsoYbLu34nt"></div>
+      
+      <button type="submit">Kirim Pesan</button>
+      <p class="success-message" id="successMessage">Terima kasih, pesan Anda sudah terkirim ✅</p>
+    </form>
+  </section>
+
+  <footer>
+    © 2026 Ayratama Studio – Professional Structural Engineering Services
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Validasi email
+      const emailField = form.querySelector('input[name="email"]');
+      const emailValue = emailField.value;
+      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+      if (!emailPattern.test(emailValue)) {
+        alert("Alamat email tidak valid, silakan periksa kembali.");
+        return;
+      }
+
+      // Validasi reCAPTCHA
+      const recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert("Silakan verifikasi reCAPTCHA terlebih dahulu.");
+        return;
+      }
+
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        successMessage.style.display = 'block';
+        form.reset();
+        grecaptcha.reset();
+        // Redirect otomatis ke WhatsApp
+        setTimeout(() => {
+          window.location.href = "https://wa.me/6285697666386
